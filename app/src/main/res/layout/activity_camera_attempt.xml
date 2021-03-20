@@ -30,6 +30,25 @@
 
         android:background="@drawable/upload_icon"
         />
+    <TextView
+        android:id="@+id/tvTimer"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+
+        android:text="5"
+        android:textSize="64sp"
+        android:textColor="@android:color/white"
+
+
+        />
+
 
 
 

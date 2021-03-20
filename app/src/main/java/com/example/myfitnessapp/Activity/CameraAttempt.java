@@ -17,6 +17,7 @@ import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -27,6 +28,7 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myfitnessapp.R;
@@ -40,6 +42,12 @@ import java.util.List;
 
 public class CameraAttempt extends AppCompatActivity {
 //Start with 11th
+
+    private TextView textViewTimer;
+    private CountDownTimer countDownTimer;
+    private long timeleft = 5000; //5000 miliseconds is 5 seconds
+    private boolean timerRunningOrNot;
+
     private TextureView mtextureView;
     private static final int REQUEST_CAMERA_PERMISSION_RESULT = 0;
     private TextureView.SurfaceTextureListener mSurfaceTextureViewListener = new TextureView.SurfaceTextureListener() {
@@ -72,7 +80,8 @@ public class CameraAttempt extends AppCompatActivity {
             mCameraDevice = camera;
             startPreview();
             ///comment the toast later
-            Toast.makeText(CameraAttempt.this, "Camera Connected", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(CameraAttempt.this, "Camera Connected", Toast.LENGTH_SHORT).show();
+
         }
 
         @Override
@@ -99,6 +108,7 @@ public class CameraAttempt extends AppCompatActivity {
     private boolean mIsRecording = false;
 
 
+
     private static SparseArray ORIENTATIONS =  new SparseArray();
     static {
         ORIENTATIONS.append(Surface.ROTATION_0 , 0);
@@ -121,9 +131,12 @@ public class CameraAttempt extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_attempt);
 
-
+// Here when the button is clicked the countdown starts
         mtextureView = findViewById(R.id.textureViewOP);
         mRecordImageButton = findViewById(R.id.imgBtnVideo);
+        textViewTimer = findViewById(R.id.tvTimer);
+
+
         mRecordImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,15 +145,46 @@ public class CameraAttempt extends AppCompatActivity {
                     mRecordImageButton.setVisibility(View.VISIBLE);
                 }
                 else {
+                    startTimer();
                     mIsRecording = true;
                     mRecordImageButton.setVisibility(View.INVISIBLE);
-                    Toast.makeText(CameraAttempt.this, "Recording started", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
 
 
 
+    }
+
+
+    private void startTimer() {
+        //Toast.makeText(this, "int start timer", Toast.LENGTH_SHORT).show();
+        countDownTimer = new CountDownTimer(timeleft,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+                timeleft = millisUntilFinished;
+                updateTimer();
+            }
+
+            @Override
+            public void onFinish() {
+                //make it disappear
+                textViewTimer.setVisibility(View.INVISIBLE);
+
+            }
+        }.start();
+        timerRunningOrNot = true; //not req
+    }
+
+    private void updateTimer() {
+
+        int secs =(int) timeleft / 1000;
+        String timeLeftText;
+
+        timeLeftText ="" +  secs;// "" this is added as it is a string text and v cant put int so v add it as a string by putting ""
+        textViewTimer.setText(timeLeftText);
     }
 
     @Override
