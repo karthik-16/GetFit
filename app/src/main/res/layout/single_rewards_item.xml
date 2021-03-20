@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    android:elevation="90dp"
+    android:layout_margin="10dp"
+    >
+    <LinearLayout
+        android:id="@+id/llSingleRewardItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#000000"
+        >
+        <!-- the scaleType centreCrop will crop any
+         large image to the centre-->
+        <ImageView
+            android:id="@+id/ivRewardImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/push_ups"
+            android:scaleType="centerCrop"
+            />
+        <TextView
+            android:id="@+id/tvRewardTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+
+            android:text="Reward Title"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            />
+        <TextView
+            android:id="@+id/tvRewardDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+
+            android:text="Reward Desc"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            />
+
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>

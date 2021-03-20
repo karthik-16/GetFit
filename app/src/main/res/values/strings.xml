@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MyFitnessApp</string>
+    <string name="name">Name</string>
+    <string name="number">Number</string>
+    <string name="login">Login</string>
+    <string name="terms1">I agree to the </string>
+    <string name="terms2">Terms and Conditions</string>
+    <string name="otp">Enter OTP</string>
+    <string name="signIn">Sign In</string>
+    <string name="upload">Upload</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

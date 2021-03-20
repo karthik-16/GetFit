@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>          <!--Title Bar-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>  <!--Notification Bar-->
+        <item name="colorAccent">@color/colorAccent</item>            <!---->
+        <item name="android:windowAnimationStyle">@style/animation</item>
+    </style>
+
+    <style name="FullScreen" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <!-- In here we can set the font family, textSize, etc of widgets-->
+
+    <style name="animation">
+        <item name="android:windowEnterAnimation">@anim/animate_fade_enter</item>
+        <item name="android:windowExitAnimation">@anim/animate_fade_exit</item>
+    </style>
+</resources>

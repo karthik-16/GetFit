@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:weightSum="5"
+    android:layout_gravity="bottom"
+    >
+        <ImageView
+            android:id="@+id/menuWallet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+
+            android:src="@drawable/wallet"
+            />
+
+        <ImageView
+            android:id="@+id/menuRewards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+
+            android:src="@drawable/useandthrow1"
+            />
+        <ImageView
+            android:id="@+id/menuUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+
+            android:src="@drawable/camera_upload"
+            />
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+
+            android:src="@drawable/useandthrow1"
+            />
+        <!-- i had used the michael...circularImageView before but had a problem with the
+         weight being 1 so just put a normal imageView for now
+         -->
+        <ImageView
+            android:id="@+id/menuProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+
+            android:src="@drawable/camera_upload"
+            />
+</LinearLayout>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.UpdatingUserInfo"
+    android:orientation="vertical"
+    >
+
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/ivDisplayImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/person"
+        android:paddingTop="15dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#000"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        />
+
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingVertical="5dp"
+        android:paddingStart="15dp"
+
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+
+        android:background="@drawable/edittext_round_borders"
+
+        android:hint="Name"
+        android:textSize="24sp"
+        android:textColorHint="@color/colorAccent"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="start"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+
+        android:text="Create Username"
+        android:textSize="16sp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        >
+        <EditText
+            android:id="@+id/etSetUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingVertical="5dp"
+            android:paddingStart="15dp"
+
+            android:layout_weight="1"
+
+            android:background="@drawable/edittext_round_borders"
+
+            android:hint="Username"
+            android:textSize="24sp"
+            android:textColorHint="@color/colorAccent"
+
+            />
+        <ImageView
+            android:id="@+id/ivCheckUsername"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:src="@drawable/just_a_tick"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etSetBio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+
+        android:background="@drawable/edittext_round_borders"
+
+        android:hint=" Enter Bio"
+        android:textSize="24sp"
+        android:textColorHint="@color/colorAccent"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_borders"
+            android:text="Save"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:id="@+id/tvSaveInfo"
+            android:paddingVertical="5dp"
+            android:textStyle="bold"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/colorAccent"
+            android:drawableLeft="@drawable/edit"
+            android:visibility="invisible"
+            />
+    </LinearLayout>
+</LinearLayout>

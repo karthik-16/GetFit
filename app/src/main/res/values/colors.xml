@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color><!--Title Bar , and widget(Button etc) background -->
+    <color name="colorPrimaryDark">#bfbfbf</color><!--Notification Bar-->
+    <color name="colorAccent">#6200EE</color>
+</resources>

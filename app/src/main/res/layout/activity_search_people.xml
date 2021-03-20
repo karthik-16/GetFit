@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.SearchPeopleActivity"
+    android:orientation="vertical"
+    android:background="#cccccc"
+    android:gravity="center_horizontal"
+    >
+
+        <EditText
+            android:id="@+id/etSearchBar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="10dp"
+
+            android:paddingVertical="2dp"
+            android:paddingStart="20dp"
+
+            android:background="@drawable/edittext_round_borders"
+            android:shadowColor="@android:color/white"
+
+            android:hint="Search Username"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="20sp"
+            />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchPeople"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_marginTop="20dp"
+        />
+
+</LinearLayout>
