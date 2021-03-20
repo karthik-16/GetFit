@@ -23,19 +23,28 @@ import com.example.myfitnessapp.Classes.videoModel;
 import com.example.myfitnessapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class videoAdapter extends RecyclerView.Adapter<videoAdapter.videoViewHolder> {
     private static final String Tag = "TAG";
-    static long likes;
+    Task<Void> documentReference;
+    static String id;
+    FirebaseFirestore fstore = FirebaseFirestore.getInstance() ;
+    static long postLikes;
     boolean postliked = false;
     private List<videoModel> videoItems;
         Context context;
@@ -60,26 +69,32 @@ public videoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewTyp
 @Override
 public void onBindViewHolder(@NonNull final videoViewHolder holder, int position) {
 
+
         holder.setData(videoItems.get(position));
         holder.imageViewlikes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                if (postliked == false){
+
                    //post isnt liked
                    holder.imageViewlikes.setImageResource(R.drawable.liked);
-                   likes++;
+                   ++postLikes;
                    postliked = true;
-                   //add to firestore
 
+                   documentReference = fstore.collection("videos").document(id).update("likes",postLikes);
 
                }
                else {
                    //post is liked
                    holder.imageViewlikes.setImageResource(R.drawable.like);
-                   --likes;
+                   --postLikes;
                    postliked =false;
+
+                   documentReference = fstore.collection("videos").document(id).update("likes",postLikes);
+
                }
-                holder.tvLikes.setText(likes+"");
+                holder.tvLikes.setText(postLikes+"");
             }
         });
         }
@@ -112,10 +127,11 @@ static class videoViewHolder extends RecyclerView.ViewHolder {
     }
 
     void setData(final videoModel videoItem) {
+        id= videoItem.getId();
         tvName.setText(videoItem.getUsername());
         tvChallenge.setText(videoItem.getChallenge_name());
         tvLikes.setText(videoItem.getLikes() + "");
-        likes = videoItem.getLikes();
+        postLikes = videoItem.getLikes();
         videoView.setVideoPath(videoItem.getVideourl());
         Picasso.get().load(videoItem.getProfileimg()).into(profileImage);
 

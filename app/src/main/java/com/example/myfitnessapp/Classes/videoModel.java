@@ -1,18 +1,19 @@
 package com.example.myfitnessapp.Classes;
 
 public class videoModel {
-    public String challenge_name,profileimg,username,videourl;
+    public String challenge_name,profileimg,username,videourl,id;
     public long ads_watched,count,likes,points,rank;
 
     public videoModel() {
         //this is required by firestore to query data
     }
 
-    public videoModel(String challenge_name, String profileimg, String username, String videourl, long ads_watched, long count, long likes, long points, long rank) {
+    public videoModel(String challenge_name, String profileimg, String username, String videourl, String id, long ads_watched, long count, long likes, long points, long rank) {
         this.challenge_name = challenge_name;
         this.profileimg = profileimg;
         this.username = username;
         this.videourl = videourl;
+        this.id = id;
         this.ads_watched = ads_watched;
         this.count = count;
         this.likes = likes;
@@ -90,5 +91,13 @@ public class videoModel {
 
     public void setRank(long rank) {
         this.rank = rank;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
