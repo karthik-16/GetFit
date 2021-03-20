@@ -5,7 +5,9 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.nfc.Tag;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -33,7 +35,8 @@ import java.util.List;
 
 public class videoAdapter extends RecyclerView.Adapter<videoAdapter.videoViewHolder> {
     private static final String Tag = "TAG";
-
+    static long likes;
+    boolean postliked = false;
     private List<videoModel> videoItems;
         Context context;
 
@@ -55,9 +58,30 @@ public videoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewTyp
         }
 
 @Override
-public void onBindViewHolder(@NonNull videoViewHolder holder, int position) {
+public void onBindViewHolder(@NonNull final videoViewHolder holder, int position) {
 
         holder.setData(videoItems.get(position));
+        holder.imageViewlikes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               if (postliked == false){
+                   //post isnt liked
+                   holder.imageViewlikes.setImageResource(R.drawable.liked);
+                   likes++;
+                   postliked = true;
+                   //add to firestore
+
+
+               }
+               else {
+                   //post is liked
+                   holder.imageViewlikes.setImageResource(R.drawable.like);
+                   --likes;
+                   postliked =false;
+               }
+                holder.tvLikes.setText(likes+"");
+            }
+        });
         }
 
 @Override
@@ -70,8 +94,9 @@ static class videoViewHolder extends RecyclerView.ViewHolder {
 
     VideoView videoView;
     TextView tvName, tvChallenge,tvLikes;
-    ImageView profileImage;
+    ImageView profileImage, imageViewlikes;
     ProgressBar progressBar;
+
 
 
     public videoViewHolder(@NonNull View itemView) {
@@ -83,12 +108,14 @@ static class videoViewHolder extends RecyclerView.ViewHolder {
         tvChallenge = itemView.findViewById(R.id.textViewChallenge);
         profileImage = itemView.findViewById(R.id.profileImg);
         tvName = itemView.findViewById(R.id.textViewName);
+        imageViewlikes = itemView.findViewById(R.id.like);
     }
 
     void setData(final videoModel videoItem) {
         tvName.setText(videoItem.getUsername());
         tvChallenge.setText(videoItem.getChallenge_name());
         tvLikes.setText(videoItem.getLikes() + "");
+        likes = videoItem.getLikes();
         videoView.setVideoPath(videoItem.getVideourl());
         Picasso.get().load(videoItem.getProfileimg()).into(profileImage);
 

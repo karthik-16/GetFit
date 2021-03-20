@@ -7,6 +7,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -99,6 +101,27 @@ public class VideoVIewer extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        findViewById(R.id.vPager).setOnTouchListener(new View.OnTouchListener() {
+
+            GestureDetector gestureDetector = new GestureDetector(getApplicationContext(),new GestureDetector.SimpleOnGestureListener(){
+                @Override
+                public boolean onDoubleTapEvent(MotionEvent e) {
+                    //increase the like by one in firestore
+                    Toast.makeText(getApplicationContext(), "double clicked", Toast.LENGTH_SHORT).show();
+
+                    return super.onDoubleTapEvent(e);
+                }
+            });
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                gestureDetector.onTouchEvent(event);
+                return false;
+
+            }
+        });
+
 
 
     }
